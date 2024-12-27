@@ -1,0 +1,52 @@
+# Папки сборки
+/build/
+/out/
+/cmake-build-*/
+
+# Файлы сборки и бинарные файлы
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+
+# Файлы CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+*.cmake
+
+# Файлы VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Файлы C++
+# Прекомпилированные заголовки
+*.gch
+*.pch
+
+# Зависимости
+*.d
+
+# Отладочная информация
+*.dSYM/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Временные файлы
+*.swp
+*~
