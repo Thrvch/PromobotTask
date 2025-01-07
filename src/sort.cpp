@@ -8,10 +8,6 @@ using namespace std;
 
 mutex console_mutex;
 
-bool compare(const Shapes* a, const Shapes* b) {
-    return a->getArea() < b->getArea();
-}
-
 void printArray(const vector<Shapes*>& arr){
     for( size_t i = 0; i < arr.size(); i++){
         cout << "Type: " << arr[i] -> getType() << "  |  Area: " << arr[i] -> getArea() << "\n";
@@ -78,8 +74,36 @@ void bubble_sort(vector<Shapes*>& arr){
     printOut("bubble", arr);
 }
 
+int partition(vector<Shapes*>& arr, int start, int end) {
+    int mid = start + (end - start) / 2;
+    int i = start;
+    swap(arr[mid], arr[end]);
+    int pivot = arr[end] -> getArea();
+
+    for (int j = start; j < end; j++) {
+        if (arr[j] -> getArea() <= pivot) {
+            swap(arr[i], arr[j]);
+            i++;
+        }
+    }
+    swap(arr[end], arr[i]);
+    return i;
+}
+
+
+void quick_sort_impl(vector<Shapes*>& arr, int start, int end){
+    if (start < end) {
+        int pivot = partition(arr, start, end);
+        quick_sort_impl(arr, start, pivot - 1);
+        quick_sort_impl(arr, pivot + 1, end);
+    }
+}
+
+
+
 void quick_sort(vector<Shapes*>& arr){
-    sort(arr.begin(), arr.end(), compare);
+    if (arr.size() <= 1) return;
+    quick_sort_impl(arr, 0, arr.size() - 1);
     printOut("quick", arr);
 }
 
